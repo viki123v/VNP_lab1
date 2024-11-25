@@ -4,8 +4,10 @@ import mk.finki.ukim.mk.lab.factories.impl.RArtistFactory;
 import mk.finki.ukim.mk.lab.model.Artist;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Repository
@@ -15,7 +17,8 @@ public class ArtistRepository {
     public List<Artist> findAll() {return artistList;}
 
     public ArtistRepository(RArtistFactory artistFactory){
-        artistList = IntStream.range(0,5).mapToObj(i -> artistFactory.createInstance()).toList();
+        artistList = IntStream.range(0,5).mapToObj(i -> artistFactory.createInstance())
+                              .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public Optional<Artist> findById(Long id) {

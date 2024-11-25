@@ -1,0 +1,17 @@
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/Labs1BApplication.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/factories/impl/RArtistFactory.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/factories/impl/RSongFactory.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/factories/impl/RStringFac.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/factories/interfaces/RandomFactory.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/model/Album.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/model/Artist.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/model/Song.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/repository/ArtistRepository.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/repository/SongRepository.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/services/impl/ArtistService.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/services/impl/SongService.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/services/interfaces/ArtistService.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/services/interfaces/SongService.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/web/SongDetailsServlet.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/web/SongListServlet.java
+/home/viki123v/Documents/Faculty/Sem5/Web/lab2/src/main/java/mk/finki/ukim/mk/lab/web/АrtistServlet.java

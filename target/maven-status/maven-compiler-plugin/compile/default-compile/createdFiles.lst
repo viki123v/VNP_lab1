@@ -1,0 +1,17 @@
+mk/finki/ukim/mk/lab/services/impl/ArtistService.class
+mk/finki/ukim/mk/lab/model/Artist.class
+mk/finki/ukim/mk/lab/model/Song.class
+mk/finki/ukim/mk/lab/web/SongListServlet.class
+mk/finki/ukim/mk/lab/factories/impl/RArtistFactory.class
+mk/finki/ukim/mk/lab/web/АrtistServlet.class
+mk/finki/ukim/mk/lab/factories/interfaces/RandomFactory.class
+mk/finki/ukim/mk/lab/model/Album.class
+mk/finki/ukim/mk/lab/services/impl/SongService.class
+mk/finki/ukim/mk/lab/factories/impl/RStringFac.class
+mk/finki/ukim/mk/lab/factories/impl/RSongFactory.class
+mk/finki/ukim/mk/lab/repository/SongRepository.class
+mk/finki/ukim/mk/lab/repository/ArtistRepository.class
+mk/finki/ukim/mk/lab/services/interfaces/SongService.class
+mk/finki/ukim/mk/lab/web/SongDetailsServlet.class
+mk/finki/ukim/mk/lab/services/interfaces/ArtistService.class
+mk/finki/ukim/mk/lab/Labs1BApplication.class

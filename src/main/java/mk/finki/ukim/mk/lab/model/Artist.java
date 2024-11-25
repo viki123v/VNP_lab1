@@ -1,10 +1,13 @@
 package mk.finki.ukim.mk.lab.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import jakarta.persistence.Embeddable;
+import lombok.*;
 
 @AllArgsConstructor
-@Data
+@Embeddable
+@NoArgsConstructor
+@Getter
+@Setter
 public class Artist {
     private Long id;
     private String firstName;

@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import mk.finki.ukim.mk.lab.services.impl.SongServiceImpl;
 import mk.finki.ukim.mk.lab.services.interfaces.SongService;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring6.SpringTemplateEngine;
@@ -14,14 +15,21 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 import java.io.IOException;
 
 @WebServlet("/song/details/*")
-@AllArgsConstructor
 public class SongDetailsServlet extends HttpServlet {
 
-    private SpringTemplateEngine engine;
-    private SongService songService;
+    private final SpringTemplateEngine engine;
+    private final SongService songService;
+
+    public SongDetailsServlet(
+        SpringTemplateEngine engine,
+        SongServiceImpl songServiceImpl
+    ){
+        songService=songServiceImpl;
+        this.engine=engine;
+    }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         WebContext context=new WebContext(
             JakartaServletWebApplication.buildApplication(getServletContext())
                 .buildExchange(req,resp)

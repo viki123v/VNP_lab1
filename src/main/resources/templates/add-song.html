@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Song</title>
+    <style>
+        form{
+            display: flex;
+            gap:1rem;
+            flex-direction: column;
+            width: max-content;
+        }
+    </style>
+</head>
+<body>
+<form th:action="${isNew} ? '/songs/add'  : '/songs/edit/' + ${song.getId()}" th:object="${song}" method="post">
+    <label>
+        Title
+        <input type="text" name="title" th:field="*{title}"/>
+    </label>
+    <label>
+        TrackId
+        <input type="text" name="trackId" th:field="*{trackId}"/>
+    </label>
+    <label>
+        Genre
+        <input type="text" name="genre" th:field="*{genre}"/>
+    </label>
+    <label>
+        Release Year
+        <input type="text" name="releaseYear" th:field="*{releaseYear}"/>
+    </label>
+    <select name="albumId" th:field="*{albumId}">
+        <option
+            th:each="album:${albums}"
+            th:value="${album.getId()}"
+            th:text="${album.getName()}"
+        ></option>
+    </select>
+    <button th:text="${isNew} ? 'Save' : 'Change'"></button>
+</form>
+</body>
+</html>
