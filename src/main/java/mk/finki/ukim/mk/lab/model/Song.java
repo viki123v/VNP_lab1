@@ -1,26 +1,29 @@
 package mk.finki.ukim.mk.lab.model;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import lombok.*; 
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class Song {
-    private String trackId;
-    private String title;
-    private String genre;
-    private int releaseYear;
-    @ElementCollection
-    private List<Artist> performers;
+    @NonNull private String trackId;
+    @NonNull private String title;
+    @NonNull private String genre;
+    @NonNull private Integer releaseYear;
+
+    @OneToMany(fetch=FetchType.EAGER)
+    @NonNull private List<Artist> performers;
+
     @Id
+    @GeneratedValue
     private Long id;
-    @ManyToOne
-    private Album toAlbum;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    @NonNull private Album toAlbum;
 }

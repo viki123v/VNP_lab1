@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class RArtistFactory implements RandomFactory<Artist> {
 
-    private static Long next_id= 0L;
     private RandomFactory<String> stringFac;
 
     public RArtistFactory(RStringFac stringFac){
@@ -19,8 +18,7 @@ public class RArtistFactory implements RandomFactory<Artist> {
     @Override
     public Artist createInstance() {
         return new Artist(
-            next_id++,
-            stringFac.createInstance(),
+           stringFac.createInstance(),
             stringFac.createInstance(),
             stringFac.createInstance()
         );

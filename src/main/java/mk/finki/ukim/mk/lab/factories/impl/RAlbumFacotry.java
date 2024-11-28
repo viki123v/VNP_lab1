@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicLong;
 @Component
 public class RAlbumFacotry implements RandomFactory<Album> {
 
-    private static AtomicLong idGen = new AtomicLong(0);
     private static Random yearGen = new Random();
     private RandomFactory<String> stringFac;
 
@@ -22,7 +21,6 @@ public class RAlbumFacotry implements RandomFactory<Album> {
     @Override
     public Album createInstance() {
         return new Album(
-            idGen.addAndGet(1),
             stringFac.createInstance(),
             stringFac.createInstance(),
             String.valueOf(yearGen.nextInt(1000) + 1000),

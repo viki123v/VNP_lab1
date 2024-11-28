@@ -1,11 +1,9 @@
 package mk.finki.ukim.mk.lab.web;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
 import mk.finki.ukim.mk.lab.services.impl.SongServiceImpl;
 import mk.finki.ukim.mk.lab.services.interfaces.SongService;
 import org.thymeleaf.context.WebContext;
