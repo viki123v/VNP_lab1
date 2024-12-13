@@ -7,7 +7,6 @@ import mk.finki.ukim.mk.lab.repository.AlbumRepository;
 import mk.finki.ukim.mk.lab.services.interfaces.AlbumService;
 import org.springframework.stereotype.Service;
 
-import jakarta.annotation.PostConstruct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public List<Album> findAll() {
-        return albumRepository.findAll(); 
+       return albumRepository.findAll();
     }
 
     @Override
@@ -39,8 +38,8 @@ public class AlbumServiceImpl implements AlbumService {
         return albumRepository.findById(albumId);
     }
     
-    @PostConstruct
-    public void initalPopulation(){
+//    @PostConstruct
+    public void populate(){
         List<Album> albums=
                 IntStream.range(0,5)
                     .mapToObj(i -> albumFacotry.createInstance())

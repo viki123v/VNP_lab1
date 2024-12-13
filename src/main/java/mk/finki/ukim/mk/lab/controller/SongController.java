@@ -13,13 +13,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpSession;
+
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class SongController {
 
-    private SongService songService;
-    private AlbumService albumService;
-    private SongMapper songMapper;
+    private final SongService songService;
+    private final AlbumService albumService;
+    private final SongMapper songMapper;
 
     public SongController(
         SongServiceImpl songService,
@@ -32,12 +38,21 @@ public class SongController {
     }
 
     @GetMapping("/listSongs")
-    public String getSongsPage(@RequestParam(required = false) String error, Model model) {
-        model.addAttribute("songs", songService.listSongs());
-        model.addAttribute("albums",albumService.findAll());
-        return "listSongs";
+    public String getSongs(@RequestParam(required = false) Long albumId,Model model) {
+        if(albumId==null)
+            model.addAttribute("songs", songService.findAll()); 
+        else 
+            model.addAttribute("songs",songService.findByAlbumId(albumId));
+        model.addAttribute("albums", albumService.findAll()); 
+        return "listSongs"; 
     }
 
+    @PostMapping("/listSongs")
+    public String postSongs(@RequestParam String trackId, HttpSession session) {
+        session.setAttribute("trackId", trackId);        
+        return "redirect:/artist";
+    }
+    
     @PostMapping("/songs/add")
     public String saveSong(
         @ModelAttribute SongDTO dto
@@ -58,6 +73,7 @@ public class SongController {
     @GetMapping("/songs/edit-form/{songId}")
     public String getEditSongForm(@PathVariable Long songId, Model model) {
         Optional<Song> song = songService.findById(songId);
+        model.addAttribute("albums",albumService.findAll());
 
         if (song.isEmpty())
             return "redirect:/listSongs";
@@ -79,7 +95,7 @@ public class SongController {
         return "add-song";
     }
 
-    @PostMapping("songs/delete/{id}")
+    @PostMapping("/songs/delete/{id}")
     public String deleteSong(@PathVariable Long id) {
         songService.removeSongById(id);
         return "redirect:/listSongs";

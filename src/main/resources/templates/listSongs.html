@@ -12,7 +12,7 @@
             display: block;
         }
 
-        .lst-songs > div{
+        .lst-songs > div {
             display: flex;
             flex-direction: row;
         }
@@ -33,10 +33,10 @@
     </form>
     <ul class="lst-songs">
         <div th:each="song:${songs}">
-            <span th:text="|${song.getTitle()} , ${song.getGenre()} , ${song.getReleaseYear()} , ${song.getToAlbum().getName()}|"></span>
+            <span th:text="|${song.getTitle()} , ${song.getGenre()} , ${song.getReleaseYear()} , ${song.getAlbum().getName()}|"></span>
             <form
-                th:action="@{songs/delete/{id} (id=${song.getId()})}"
-                method="post"
+                    th:action="@{songs/delete/{id} (id=${song.getId()})}"
+                    method="post"
             >
                 <button>Delete</button>
             </form>
@@ -49,6 +49,18 @@
         </div>
     </ul>
     <button><a href="/songs/add-form">Add new song</a></button>
+    <form action="/listSongs" method="get">
+        <label>Filter songs by album
+            <select name="albumId">
+                <option  th:each="album:${albums}"
+                         th:value="${album.getId()}"
+                         th:text="${album.getName()}"
+                >
+                </option>
+            </select>
+        </label>
+        <button>Submit</button>
+    </form>
 </main>
 </body>
 </html>

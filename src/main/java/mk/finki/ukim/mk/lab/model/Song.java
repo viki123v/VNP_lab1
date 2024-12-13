@@ -21,9 +21,10 @@ public class Song {
     @NonNull private List<Artist> performers;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @NonNull private Album toAlbum;
+    @JoinColumn(name = "album_id")
+    @NonNull private Album album;
 }

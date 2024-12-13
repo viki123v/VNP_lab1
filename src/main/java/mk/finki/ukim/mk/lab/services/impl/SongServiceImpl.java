@@ -44,7 +44,7 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public List<Song> listSongs() {
+    public List<Song> findAll() {
         return songRepository.findAll();
     }
 
@@ -66,6 +66,11 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
+    public List<Song> findByAlbumId(Long albumId) {
+        return songRepository.findAllByAlbum_Id(albumId);
+    }
+
+    @Override
     public Optional<Song> findById(Long songId) {
         return songRepository.findById(songId);
     }
@@ -76,7 +81,7 @@ public class SongServiceImpl implements SongService {
             Song song = songMapper.song(dto);
             findById(songId)
                     .ifPresent(selectedSong -> {
-                        selectedSong.setToAlbum(song.getToAlbum());
+                        selectedSong.setAlbum(song.getAlbum());
                         selectedSong.setReleaseYear(song.getReleaseYear());
                         selectedSong.setGenre(song.getGenre());
                         selectedSong.setTrackId(song.getTrackId());
@@ -109,7 +114,7 @@ public class SongServiceImpl implements SongService {
         return artist;
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void populate() {
         List<Song> songs = IntStream.range(0, 5).mapToObj(i -> rSongFactory.createInstance())
                 .collect(Collectors.toCollection(ArrayList::new));

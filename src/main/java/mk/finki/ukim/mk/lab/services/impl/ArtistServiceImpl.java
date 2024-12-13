@@ -18,14 +18,14 @@ import java.util.stream.Collectors;
 public class ArtistServiceImpl implements ArtistService {
 
     private final ArtistRepository artistRepository;
-    private final RandomFactory<Artist> artisFactory; 
+    private final RandomFactory<Artist> artisFactory;
 
     public ArtistServiceImpl(
         ArtistRepository artistRepository,
         RArtistFactory artistFactory
     ){
         this.artistRepository=artistRepository;
-        this.artisFactory=artistFactory; 
+        this.artisFactory=artistFactory;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ArtistServiceImpl implements ArtistService {
         return artistRepository.findById(id).get();
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void populate(){
        List<Artist> artistList = IntStream.range(0,5).mapToObj(i -> artisFactory.createInstance())
                               .collect(Collectors.toCollection(ArrayList::new));

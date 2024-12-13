@@ -1,11 +1,7 @@
 package mk.finki.ukim.mk.lab.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
-import jakarta.persistence.FetchType;
 
 import java.util.List;
 
@@ -16,13 +12,13 @@ import java.util.List;
 @Setter
 public class Album {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     
     @NonNull private String name;
     @NonNull private String genre;
     @NonNull private String releaseYear;
 
-    @OneToMany(mappedBy = "toAlbum",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "album",fetch=FetchType.EAGER)
     @NonNull private List<Song> songs;
 }

@@ -1,4 +1,4 @@
-package mk.finki.ukim.mk.lab.web;
+package mk.finki.ukim.mk.lab.controller;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;

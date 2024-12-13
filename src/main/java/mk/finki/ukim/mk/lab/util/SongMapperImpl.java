@@ -39,7 +39,7 @@ public class SongMapperImpl implements SongMapper {
     public SongDTO dto(Song song) {
     SongDTO dto = new SongDTO();
 
-    dto.setAlbumId(song.getToAlbum().getId());
+    dto.setAlbumId(song.getAlbum().getId());
     dto.setReleaseYear(song.getReleaseYear());
     dto.setGenre(song.getGenre());
     dto.setTrackId(song.getTrackId());
