@@ -18,10 +18,7 @@ public class SongDetailsServlet extends HttpServlet {
     private final SpringTemplateEngine engine;
     private final SongService songService;
 
-    public SongDetailsServlet(
-        SpringTemplateEngine engine,
-        SongServiceImpl songServiceImpl
-    ){
+    public SongDetailsServlet(SpringTemplateEngine engine,SongServiceImpl songServiceImpl){
         songService=songServiceImpl;
         this.engine=engine;
     }

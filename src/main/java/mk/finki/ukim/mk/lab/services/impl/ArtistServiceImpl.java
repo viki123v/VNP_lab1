@@ -38,7 +38,7 @@ public class ArtistServiceImpl implements ArtistService {
         return artistRepository.findById(id).get();
     }
 
-//    @PostConstruct
+    @PostConstruct
     public void populate(){
        List<Artist> artistList = IntStream.range(0,5).mapToObj(i -> artisFactory.createInstance())
                               .collect(Collectors.toCollection(ArrayList::new));

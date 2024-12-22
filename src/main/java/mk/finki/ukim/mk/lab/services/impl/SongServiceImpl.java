@@ -114,7 +114,7 @@ public class SongServiceImpl implements SongService {
         return artist;
     }
 
-//    @PostConstruct
+    @PostConstruct
     public void populate() {
         List<Song> songs = IntStream.range(0, 5).mapToObj(i -> rSongFactory.createInstance())
                 .collect(Collectors.toCollection(ArrayList::new));

@@ -1,5 +1,6 @@
 package mk.finki.ukim.mk.lab.services.impl;
 
+import jakarta.annotation.PostConstruct;
 import mk.finki.ukim.mk.lab.factories.impl.RAlbumFacotry;
 import mk.finki.ukim.mk.lab.factories.interfaces.RandomFactory;
 import mk.finki.ukim.mk.lab.model.Album;
@@ -38,7 +39,7 @@ public class AlbumServiceImpl implements AlbumService {
         return albumRepository.findById(albumId);
     }
     
-//    @PostConstruct
+    @PostConstruct
     public void populate(){
         List<Album> albums=
                 IntStream.range(0,5)

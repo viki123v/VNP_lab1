@@ -49,7 +49,7 @@ public class SongController {
 
     @PostMapping("/listSongs")
     public String postSongs(@RequestParam String trackId, HttpSession session) {
-        session.setAttribute("trackId", trackId);        
+        session.setAttribute("trackId",trackId);
         return "redirect:/artist";
     }
     
@@ -99,6 +99,11 @@ public class SongController {
     public String deleteSong(@PathVariable Long id) {
         songService.removeSongById(id);
         return "redirect:/listSongs";
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage(){
+        return "login";
     }
 
 }

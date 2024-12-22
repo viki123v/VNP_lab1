@@ -1,4 +1,6 @@
-<html>
+<html
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <meta charset="utf-8">
     <title>Songs Homepage - Welcome to My Music Store</title>
@@ -16,6 +18,11 @@
             display: flex;
             flex-direction: row;
         }
+
+        .form-wrapper{
+            display: flex;
+            flex-direction: row;
+        }
     </style>
 </head>
 <body>
@@ -23,44 +30,50 @@
     <h1>Welcome to My Music Store</h1>
 </header>
 <main>
-    <h2>Choose a song:</h2>
-    <form action="/listSongs" method="post">
-        <label th:each="song:${songs}">
-            <input type="radio" th:value="${song.getTrackId()}" name="trackId">
-            <span th:text="|${song.getTitle()} , ${song.getGenre()} , ${song.getReleaseYear()}|"></span>
-        </label>
-        <input type='submit' value='Submit'>
-    </form>
+    <th:object sec:authorize="hasRole('ADMIN')">
+        <h2>Choose a song:</h2>
+        <form action="/listSongs" method="post">
+            <label th:each="song:${songs}">
+                <input type="radio" th:value="${song.getTrackId()}" name="trackId">
+                <span th:text="|${song.getTitle()} , ${song.getGenre()} , ${song.getReleaseYear()}|"></span>
+            </label>
+            <input type='submit' value='Submit'>
+        </form>
+    </th:object>
     <ul class="lst-songs">
         <div th:each="song:${songs}">
             <span th:text="|${song.getTitle()} , ${song.getGenre()} , ${song.getReleaseYear()} , ${song.getAlbum().getName()}|"></span>
-            <form
-                    th:action="@{songs/delete/{id} (id=${song.getId()})}"
-                    method="post"
-            >
-                <button>Delete</button>
-            </form>
-            <form
-                    th:action="@{/songs/edit-form/{id} (id=${song.getId()})}"
-                    method="get"
-            >
-                <button>Edit</button>
-            </form>
+           <div class="form-wrapper" sec:authorize="hasRole('ADMIN')">
+                <form
+                        th:action="@{songs/delete/{id} (id=${song.getId()})}"
+                        method="post"
+                >
+                    <button>Delete</button>
+                </form>
+                <form
+                        th:action="@{/songs/edit-form/{id} (id=${song.getId()})}"
+                        method="get"
+                >
+                    <button>Edit</button>
+                </form>
+           </div>
         </div>
     </ul>
-    <button><a href="/songs/add-form">Add new song</a></button>
-    <form action="/listSongs" method="get">
-        <label>Filter songs by album
-            <select name="albumId">
-                <option  th:each="album:${albums}"
-                         th:value="${album.getId()}"
-                         th:text="${album.getName()}"
-                >
-                </option>
-            </select>
-        </label>
-        <button>Submit</button>
-    </form>
+    <th:object sec:authorize="hasRole('ADMIN')">
+        <button><a href="/songs/add-form">Add new song</a></button>
+        <form action="/listSongs" method="get">
+            <label>Filter songs by album
+                <select name="albumId">
+                    <option  th:each="album:${albums}"
+                             th:value="${album.getId()}"
+                             th:text="${album.getName()}"
+                    >
+                    </option>
+                </select>
+            </label>
+            <button>Submit</button>
+        </form>
+    </th:object>
 </main>
 </body>
 </html>
